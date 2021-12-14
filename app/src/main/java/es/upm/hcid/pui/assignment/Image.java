@@ -1,14 +1,8 @@
 package es.upm.hcid.pui.assignment;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Hashtable;
-
 import org.json.simple.JSONObject;
+
+import java.util.Hashtable;
 
 public class Image extends ModelEntity{
 	private int order;
@@ -22,7 +16,7 @@ public class Image extends ModelEntity{
 	 * @param order of the image within the article
 	 * @param description
 	 * @param idArticle - id of article of the image
-	 * @param image - data of the image
+	 * @param b64Image - data of the image
 	 */
 	protected Image(ModelManager mm,int order, String description, int idArticle, String b64Image){
 		super(mm);

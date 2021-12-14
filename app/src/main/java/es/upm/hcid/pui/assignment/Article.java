@@ -1,15 +1,12 @@
 package es.upm.hcid.pui.assignment;
 
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Hashtable;
-import java.util.List;
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 import org.json.simple.JSONObject;
 
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
+import java.util.Hashtable;
+
 
 public class Article extends ModelEntity{
 	
@@ -121,7 +118,7 @@ public class Article extends ModelEntity{
 		this.mainImage = image;
 	}
 	
-	public Image addImage(String b64Image, String description) throws ServerCommunicationError{	
+	public Image addImage(String b64Image, String description) throws ServerCommunicationError {
 		int order = 1;
 		Image img =new Image(mm, order, description, getId(), b64Image);
 		mainImage= img;

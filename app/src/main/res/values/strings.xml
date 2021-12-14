@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">NewsApplication</string>
+    <string name="app_name">NewsAppG1</string>
+    <string name="tabEconomy">Economy</string>
+    <string name="tabSports">Sports</string>
+    <string name="tabInternational">International</string>
+    <string name="tabAll">All</string>
+    <string name="tabNational">National</string>
+    <string name="article_image_alt">Article image</string>
+    <string name="abstract_text">Abstract</string>
+    <string name="dash">-</string>
+    <string name="title_text">Title</string>
+    <string name="category_text">Category</string>
+    <string name="logout">Logout</string>
+    <string name="login">Log in</string>
+    <string name="user">You are not logged</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="usernameHeader">Username:</string>
+    <string name="passwordHeader">Password:</string>
+    <string name="addArticleDescription">Add an article</string>
+    <string name="rememberMeCheckbox">Remember me</string>
 </resources>

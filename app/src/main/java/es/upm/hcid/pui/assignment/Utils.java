@@ -2,15 +2,9 @@ package es.upm.hcid.pui.assignment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.util.Base64;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -80,16 +74,20 @@ public class Utils {
 		int finalw = w;
 		int finalh = h;
 		double factor = 1.0d;
-		if(src.getWidth() > src.getHeight()){
-			factor = ((double)src.getHeight()/(double)src.getWidth());
-			finalh = (int)(finalw * factor);
-		}else{
-			factor = ((double)src.getWidth()/(double)src.getHeight());
-			finalw = (int)(finalh * factor);
-		}
+		if (src != null) {
+			if (src.getWidth() > src.getHeight()) {
+				factor = ((double) src.getHeight() / (double) src.getWidth());
+				finalh = (int) (finalw * factor);
+			} else {
+				factor = ((double) src.getWidth() / (double) src.getHeight());
+				finalw = (int) (finalh * factor);
+			}
 
-		Bitmap resizedImg = Bitmap.createScaledBitmap(src, finalw, finalh, true);
-		return imgToBase64String(resizedImg);
+			Bitmap resizedImg = Bitmap.createScaledBitmap(src, finalw, finalh, true);
+			return imgToBase64String(resizedImg);
+		} else {
+			return null;
+		}
 	}
 
 }

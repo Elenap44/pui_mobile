@@ -1,5 +1,13 @@
 package es.upm.hcid.pui.assignment;
 
+import es.upm.hcid.pui.assignment.exceptions.AuthenticationError;
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,19 +18,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
-
-import es.upm.hcid.pui.assignment.exceptions.AuthenticationError;
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 public class ModelManager {
 	
@@ -33,7 +33,7 @@ public class ModelManager {
 	private boolean isAdministrator = false;
 	
 	private String serviceUrl ;
-	
+
 	private boolean requireSelfSigned = false;
 	
 	public static final String ATTR_LOGIN_USER = "username";
@@ -90,9 +90,8 @@ public class ModelManager {
 		}
 		
 		serviceUrl = ini.getProperty(ATTR_SERVICE_URL);
-		
+
 		if (ini.containsKey(ATTR_LOGIN_USER) && ini.containsKey(ATTR_LOGIN_PASS)){
-			
 			login(ini.getProperty(ATTR_LOGIN_USER), ini.getProperty(ATTR_LOGIN_PASS));
 		}
 	}
@@ -139,24 +138,28 @@ public class ModelManager {
 				apikey = userJsonObject.get("apikey").toString();
 				isAdministrator = userJsonObject.containsKey("administrator");
 
-			}else{  
-				Logger.log(Logger.ERROR,connection.getResponseMessage()); 
+			}else{
+				Logger.log(Logger.ERROR,connection.getResponseMessage());
 
 				throw new AuthenticationError(connection.getResponseMessage());
 			}  
 		} catch (MalformedURLException e) {  
-			//e.printStackTrace();  
+			e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		}  
 		catch (IOException e) {  
-			//e.printStackTrace();  
+			e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		} 
 		catch (Exception e) {  
-			//e.printStackTrace();  
+			e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		} 
 		
+	}
+
+	public void logout() {
+		this.apikey = null;
 	}
 	
 	private String parseHttpStreamResult(HttpURLConnection connection) throws UnsupportedEncodingException, IOException {
@@ -178,8 +181,9 @@ public class ModelManager {
 		if (o instanceof JSONObject){
 			JSONObject jsonResult = (JSONObject) JSONValue.parseWithException(res);
 			Set<String> keys = jsonResult.keySet();
-			if (keys.contains("id"))
-				return Integer.parseInt((String) jsonResult.get("id"));
+			if (keys.contains("id")) {
+				return Integer.parseInt(Objects.requireNonNull(jsonResult.get("id")).toString());
+			}
 			else{
 				throw new ServerCommunicationError("Error: No id in json returned");
 			}	
@@ -247,6 +251,10 @@ public class ModelManager {
 	 */
 	public String getIdUser(){
 		return idUser;
+	}
+
+	public String getApikey() {
+		return apikey;
 	}
 
 	/**
@@ -399,7 +407,7 @@ public class ModelManager {
 			}else{  
 				throw new ServerCommunicationError(connection.getResponseMessage());
 			}  
-		} catch (Exception e) {  
+		} catch (Exception e) {
 			Logger.log(Logger.ERROR,"Inserting article ["+a+"] : " + e.getClass() + " ( "+e.getMessage() + ")");
 			throw new ServerCommunicationError(e.getClass() + " ( "+e.getMessage() + ")");
 		}
