@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import es.upm.hcid.pui.assignment.R;
-
 import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 import java.io.FileNotFoundException;
@@ -32,7 +30,7 @@ public class ShowArticleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_article);
+        setContentView(R.layout.activity_article_details);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -52,12 +50,14 @@ public class ShowArticleActivity extends AppCompatActivity {
 
         articleChosen = article;
 
-        TextView article_title = findViewById(R.id.titleId);
-        ImageView article_image = findViewById(R.id.imageId);
-        TextView article_category = findViewById(R.id.categoryId);
-        TextView article_abstract = findViewById(R.id.abstractId);
-        TextView article_body = findViewById(R.id.bodyId);
-        TextView userId = findViewById(R.id.userId);
+        TextView article_title = findViewById(R.id.title_textView);
+       // TextView article_subtitle = findViewById(R.id.subtitle_textView);
+        ImageView article_image = findViewById(R.id.imageView);
+        TextView article_category = findViewById(R.id.category_textView);
+        TextView article_abstract = findViewById(R.id.abstract_textView);
+        TextView article_body = findViewById(R.id.body_textView);
+        TextView userId = findViewById(R.id.userId_textView);
+        TextView modification_date = findViewById(R.id.modification_textView);
 
         article_title.setText(article.getTitleText());
         article_abstract.setText(Html.fromHtml(article.getAbstractText(), Html.FROM_HTML_MODE_COMPACT));
@@ -132,7 +132,7 @@ public class ShowArticleActivity extends AppCompatActivity {
                         Bitmap bmp = Utils.createScaledImage(BitmapFactory.decodeStream(stream), 500, 500);
                         articleChosen.addImage(Utils.imgToBase64String(bmp), "");
 
-                        ImageView viewer = findViewById(R.id.imageId);
+                        ImageView viewer = findViewById(R.id.imageView);
                         viewer.setImageBitmap(bmp);
 
                         Button btn_article_save = findViewById(R.id.btn_article_save);

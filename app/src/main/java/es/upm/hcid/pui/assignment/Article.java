@@ -5,12 +5,14 @@ import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 import org.json.simple.JSONObject;
 
+import java.util.Date;
 import java.util.Hashtable;
 
 
 public class Article extends ModelEntity{
 	
 	private String titleText;
+	private String subtitleText;
 	private String category;
 	private String abstractText;
 	private String bodyText;
@@ -19,6 +21,7 @@ public class Article extends ModelEntity{
 	private Image mainImage;
 	private String imageDescription;
 	private String thumbnail;
+	private Date publicationDate;
 
 	private String parseStringFromJson(JSONObject jsonArticle, String key, String def){
 		Object in = jsonArticle.getOrDefault(key,def);
@@ -75,7 +78,13 @@ public class Article extends ModelEntity{
 	public String getTitleText() {
 		return titleText;
 	}
-	
+
+	/*public String getSubtitleText() {
+		return subtitleText;
+	}*/
+	/*public void setSubtitleText(String subtitleText) {
+		this.subtitleText = subtitleText;
+	}*/
 	public String getCategory() {
 		return category;
 	}
@@ -129,10 +138,11 @@ public class Article extends ModelEntity{
 	public String toString() {
 		return "Article [id=" + getId()
 				//+ "isPublic=" + isPublic + ", isDeleted=" + isDeleted 
-				+", titleText=" + titleText  
+				+", titleText=" + titleText
+				//+",subtitleText=" + subtitleText
 				+", abstractText=" + abstractText 
 				+  ", bodyText="	+ bodyText + ", footerText=" + footerText 
-				//+ ", publicationDate=" + Utils.dateToString(publicationDate) 
+				+ ", publicationDate=" + Utils.dateToString(publicationDate)
 				+", image_description=" + imageDescription
 				+", image_data=" + mainImage
 				+", thumbnail=" + thumbnail 
@@ -149,6 +159,7 @@ public class Article extends ModelEntity{
 		//res.put("is_deleted", ""+(isDeleted?1:0));
 		res.put("body", bodyText);
 		res.put("subtitle", footerText);
+
 		if (mainImage!=null){
 			res.put("image_data", mainImage.getImage());
 			res.put("image_media_type", "image/png");
@@ -159,7 +170,7 @@ public class Article extends ModelEntity{
 		else if (imageDescription!=null && !imageDescription.isEmpty())
 			res.put("image_description", imageDescription);
 
-		//res.put("publication_date", publicationDate==null?null:Utils.dateToString(publicationDate));
+		res.put("publication_date", publicationDate==null?null:Utils.dateToString(publicationDate));
 		return res;
 	}
 }

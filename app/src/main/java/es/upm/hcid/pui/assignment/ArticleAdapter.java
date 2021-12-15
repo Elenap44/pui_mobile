@@ -124,9 +124,9 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
         return mFilter;
     }
 
-    public void setFilter(String fitler) {
-        this.filter = fitler;
-        this.mFilter.filter(fitler);
+    public void setFilter(String filterer) {
+        this.filter = filterer;
+        this.mFilter.filter(filterer);
     }
 
     private class ItemFilter extends Filter {

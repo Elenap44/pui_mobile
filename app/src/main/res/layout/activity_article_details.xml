@@ -15,7 +15,7 @@
         tools:context="es.upm.hcid.pui.assignment.ShowArticleActivity">
 
         <TextView
-            android:id="@+id/titleId"
+            android:id="@+id/title_textView"
             style="@style/TextAppearance.AppCompat.Title"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -25,8 +25,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"/>
 
+        <!--<TextView
+            android:id="@+id/subtitle_textView"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />-->
+
         <TextView
-            android:id="@+id/categoryId"
+            android:id="@+id/category_textView"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +41,7 @@
             android:layout_marginBottom="8dp"/>
 
         <ImageView
-            android:id="@+id/imageId"
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="209dp"
             android:scaleType="centerCrop"
@@ -81,7 +87,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/abstractId"
+            android:id="@+id/abstract_textView"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:textStyle="italic"
             android:layout_width="wrap_content"
@@ -92,7 +98,7 @@
             android:layout_marginEnd="5dp"/>
 
         <TextView
-            android:id="@+id/bodyId"
+            android:id="@+id/body_textView"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,7 +108,12 @@
             android:layout_marginTop="16dp" />
 
         <TextView
-            android:id="@+id/userId"
+            android:id="@+id/modification_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/userId_textView"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
