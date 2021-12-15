@@ -78,6 +78,12 @@ public class Article extends ModelEntity{
 	public String getTitleText() {
 		return titleText;
 	}
+	public Date getModificationDate(){
+		return publicationDate;
+	}
+	public void setModificationDate(Date modificationDate) {
+		this.publicationDate=modificationDate;
+	}
 
 	/*public String getSubtitleText() {
 		return subtitleText;

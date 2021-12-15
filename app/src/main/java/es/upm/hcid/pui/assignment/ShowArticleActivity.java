@@ -64,6 +64,13 @@ public class ShowArticleActivity extends AppCompatActivity {
         article_body.setText(Html.fromHtml(article.getBodyText(), Html.FROM_HTML_MODE_COMPACT));
         article_category.setText(article.getCategory());
 
+
+        String modificationDate = "Modification date ";
+        if (article.getModificationDate()) {
+            modificationDate += article.getModificationDate();
+        }
+        modification_date.setText(modificationDate);
+
         String userIdString = "User ID: ";
         if (article.getIdUser() > 0) {
             userIdString += article.getIdUser();
