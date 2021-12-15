@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import es.upm.hcid.pui.assignment.R;
-
 import es.upm.hcid.pui.assignment.exceptions.AuthenticationError;
 
 public class LoginActivity extends AppCompatActivity {
@@ -81,5 +79,4 @@ public class LoginActivity extends AppCompatActivity {
         ed.apply();
     }
 
-    //TODO: add remember me functionality and use remote authentication
 }

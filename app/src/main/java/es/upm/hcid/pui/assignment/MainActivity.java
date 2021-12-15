@@ -71,10 +71,8 @@ public class MainActivity extends AppCompatActivity {
     void setupArticleData() {
         Properties props = new Properties();
         props.setProperty(ModelManager.ATTR_SERVICE_URL, "https://sanger.dia.fi.upm.es/pmd-task/");
-        // check if user wanted his authentication to be remembered
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (prefs.getBoolean(LoginActivity.KEY_BOOLEAN, false)) {
-            // he authenticated before
             if (prefs.contains(LoginActivity.KEY_API) && prefs.contains(LoginActivity.KEY_USERNAME)) {
                 loggedIn = true;
                 this.username = prefs.getString(LoginActivity.KEY_USERNAME, "");
@@ -82,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 String password = prefs.getString(LoginActivity.KEY_PASSWORD, "");
                 props.setProperty(ModelManager.ATTR_LOGIN_USER, this.username);
                 props.setProperty(ModelManager.ATTR_LOGIN_PASS, password);
-                // TODO: Not sure how having the apiKey helps, since its not an attribute for ModelManager?
             }
         }
 
