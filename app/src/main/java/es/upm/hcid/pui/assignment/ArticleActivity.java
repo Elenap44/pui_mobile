@@ -85,7 +85,7 @@ public class ArticleActivity extends AppCompatActivity {
 
         if (MainActivity.loggedIn) {
 
-            Button btn_image_edit = findViewById(R.id.btn_image_edit);
+            Button btn_image_edit = findViewById(R.id.imageEdit_button);
             btn_image_edit.setVisibility(View.VISIBLE);
             btn_image_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,7 +98,7 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             });
 
-            Button btn_article_save = findViewById(R.id.btn_article_save);
+            Button btn_article_save = findViewById(R.id.articleSave_button);
             btn_article_save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,7 +116,7 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             });
 
-            Button btn_article_delete = findViewById(R.id.btn_article_delete);
+            Button btn_article_delete = findViewById(R.id.articleDelete_button);
             btn_article_delete.setVisibility(View.VISIBLE);
         }
     }
@@ -142,7 +142,7 @@ public class ArticleActivity extends AppCompatActivity {
                         ImageView viewer = findViewById(R.id.imageView);
                         viewer.setImageBitmap(bmp);
 
-                        Button btn_article_save = findViewById(R.id.btn_article_save);
+                        Button btn_article_save = findViewById(R.id.articleSave_button);
                         btn_article_save.setVisibility(View.VISIBLE);
                     } catch (FileNotFoundException | ServerCommunicationError e) {
                         e.printStackTrace();

@@ -63,16 +63,16 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
         }
 
         Article article = filteredData.get(position);
-        TextView articleTitleLabel = convertView.findViewById(R.id.articleTitleLabel);
-        articleTitleLabel.setEllipsize(TextUtils.TruncateAt.END);
+        TextView articleTitleLabel = convertView.findViewById(R.id.articleTitleLabel_textView);
+        articleTitleLabel.setEllipsize(TextUtils.TruncateAt.END);//probar
         articleTitleLabel.setSingleLine();
         articleTitleLabel.setMaxEms(15);
         articleTitleLabel.setText(article.getTitleText());
 
-        TextView articleCategoryLabel = convertView.findViewById(R.id.articleCategoryLabel);
+        TextView articleCategoryLabel = convertView.findViewById(R.id.articleCategoryLabel_textView);
         articleCategoryLabel.setText(article.getCategory());
 
-        TextView articleAbstractLabel = convertView.findViewById(R.id.articleAbstractLabel);
+        TextView articleAbstractLabel = convertView.findViewById(R.id.articleAbstractLabel_textView);
         articleAbstractLabel.setEllipsize(TextUtils.TruncateAt.END);
         articleAbstractLabel.setMaxLines(4);
         articleAbstractLabel.setText(Html.fromHtml(article.getAbstractText(), Html.FROM_HTML_MODE_COMPACT));

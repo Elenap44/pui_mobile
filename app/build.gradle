@@ -1,4 +1,4 @@
-plugins {
+plugins {//pregunta
     id 'com.android.application'
 }
 
@@ -29,7 +29,7 @@ android {
 
 dependencies {
 
-    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.appcompat:appcompat:1.4.0"
     implementation('com.googlecode.json-simple:json-simple:1.1.1')
             { exclude group: 'org.hamcrest', module: 'hamcrest-core' }
     implementation 'com.google.code.gson:gson:2.8.9'

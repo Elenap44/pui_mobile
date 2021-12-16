@@ -14,13 +14,13 @@
         android:layout_margin="16dp">
 
         <TextView
-            android:id="@+id/usernameHeader"
+            android:id="@+id/usernameHeader_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/usernameHeader" />
 
         <EditText
-            android:id = "@+id/username"
+            android:id = "@+id/username_editText"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
             android:ems="10"
@@ -33,13 +33,13 @@
             />
 
         <TextView
-            android:id="@+id/passwordHeader"
+            android:id="@+id/passwordHeader_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/passwordHeader" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/password_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -59,7 +59,7 @@
             />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/logIn_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"

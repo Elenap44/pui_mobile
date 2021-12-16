@@ -165,13 +165,13 @@ public class MainActivity extends AppCompatActivity {
     private void updateLabelsRegardingLoginStatus() {
         if (loggedIn) {
             // change button label
-            FloatingActionButton loginButton = findViewById(R.id.loginButton);
+            FloatingActionButton loginButton = findViewById(R.id.login_logOut_button);
             // change status
             TextView loginStatus = findViewById(R.id.loginStatus);
             loginStatus.setText("You are logged");
         } else {
             // change button label
-            FloatingActionButton loginButton = findViewById(R.id.loginButton);
+            FloatingActionButton loginButton = findViewById(R.id.login_logOut_button);
             // change status
             TextView loginStatus = findViewById(R.id.loginStatus);
             loginStatus.setText("You are not logged");

@@ -188,12 +188,13 @@ public class ModelManager {
 		}
 	}
 
+
 	@SuppressWarnings("unchecked")
 	private JSONObject readRestResultFromGetObject(String res) throws ParseException, ServerCommunicationError {
 		Object o = JSONValue.parseWithException(res);
 		if (o instanceof JSONObject){
 			JSONObject jsonResult = (JSONObject) JSONValue.parseWithException(res);
-			return jsonResult;	
+			return jsonResult;
 		}else{
 			throw new ServerCommunicationError("Error: No json returned");
 		}
@@ -249,9 +250,7 @@ public class ModelManager {
 		return idUser;
 	}
 
-	public String getApikey() {
-		return apikey;
-	}
+
 
 	/**
 	 * 
@@ -277,9 +276,9 @@ public class ModelManager {
 	 * @throws ServerCommunicationError
 	 */
 	public List<Article> getArticles() throws ServerCommunicationError{
-		return getArticles(-1,-1); 
+		return getArticles(-1,-1);
 	}
-		
+
 	/**
 	 * 
 	 * @return the list of articles in remote service with pagination

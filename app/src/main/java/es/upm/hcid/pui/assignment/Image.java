@@ -16,7 +16,7 @@ public class Image extends ModelEntity{
 	 * @param order of the image within the article
 	 * @param description
 	 * @param idArticle - id of article of the image
-	 * @param b64Image - data of the image
+	 * @param image - data of the image
 	 */
 	protected Image(ModelManager mm,int order, String description, int idArticle, String b64Image){
 		super(mm);
