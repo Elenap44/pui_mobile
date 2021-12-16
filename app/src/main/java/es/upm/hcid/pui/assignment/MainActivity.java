@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         props.setProperty(ModelManager.ATTR_SERVICE_URL, "https://sanger.dia.fi.upm.es/pmd-task/");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (prefs.getBoolean(LoginActivity.KEY_BOOLEAN, false)) {
-            if (prefs.contains(LoginActivity.KEY_API) && prefs.contains(LoginActivity.KEY_USERNAME)) {
+            if (prefs.contains(LoginActivity.KEY_USERNAME)) {
                 loggedIn = true;
                 this.username = prefs.getString(LoginActivity.KEY_USERNAME, "");
                 String password = prefs.getString(LoginActivity.KEY_PASSWORD, "");
@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor ed = prefs.edit();
             ed.remove(LoginActivity.KEY_USERNAME);
             ed.remove(LoginActivity.KEY_PASSWORD);
-            ed.remove(LoginActivity.KEY_API);
             ed.putBoolean(LoginActivity.KEY_BOOLEAN, false);
             ed.apply();
 

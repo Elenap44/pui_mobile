@@ -18,7 +18,6 @@ public class LoginActivity extends AppCompatActivity {
     private String userID;
     private String apiKey;
     public static String KEY_BOOLEAN = "rememberBoolean";
-    public static String KEY_API= "apiKey";
     public static String KEY_USERNAME= "usernameKey";
     public static String KEY_PASSWORD = "passwordKey";
 
@@ -49,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                 this.apiKey = MainActivity.modelManager.getApikey();
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor ed = prefs.edit();
-                ed.putString(KEY_API, apiKey);
                 ed.putString(KEY_USERNAME, username);
                 ed.putString(KEY_PASSWORD, password);
                 ed.apply();
