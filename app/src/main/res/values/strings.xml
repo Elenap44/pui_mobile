@@ -17,4 +17,5 @@
     <string name="usernameHeader">Username:</string>
     <string name="passwordHeader">Password:</string>
     <string name="rememberMeCheckbox">Remember me</string>
+    <string name="login2">Login 2</string>
 </resources>

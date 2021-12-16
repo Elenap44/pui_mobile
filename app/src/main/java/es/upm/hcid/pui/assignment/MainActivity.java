@@ -6,13 +6,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -165,15 +165,13 @@ public class MainActivity extends AppCompatActivity {
     private void updateLabelsRegardingLoginStatus() {
         if (loggedIn) {
             // change button label
-            Button loginButton = findViewById(R.id.loginButton);
-            loginButton.setText("Log out");
+            FloatingActionButton loginButton = findViewById(R.id.loginButton);
             // change status
             TextView loginStatus = findViewById(R.id.loginStatus);
             loginStatus.setText("You are logged");
         } else {
             // change button label
-            Button loginButton = findViewById(R.id.loginButton);
-            loginButton.setText("Log in");
+            FloatingActionButton loginButton = findViewById(R.id.loginButton);
             // change status
             TextView loginStatus = findViewById(R.id.loginStatus);
             loginStatus.setText("You are not logged");
