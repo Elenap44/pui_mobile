@@ -13,12 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="es.upm.hcid.pui.assignment.ArticleActivity">
-
-        <!--<TextView
-            android:id="@+id/subtitle_textView"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
+        
 
         <ImageView
             android:id="@+id/imageView"
@@ -83,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:onClick="deleteArticle"
-                android:text="Delete"
+                android:text="Delete Article"
                 android:visibility="gone" />
 
         </LinearLayout>
@@ -91,13 +86,13 @@
         <TextView
             android:id="@+id/abstract_textView"
             style="@style/TextAppearance.AppCompat.Subhead"
-            android:textStyle="italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/body_textView"
