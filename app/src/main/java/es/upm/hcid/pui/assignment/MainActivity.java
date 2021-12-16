@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     List<Article> data;
     public static Boolean loggedIn = false;
     private String username = "";
-    private String apiKey = "";
 
     List<String> tabs = Arrays.asList("All", "National", "International", "Sport", "Economy");
 
@@ -76,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             if (prefs.contains(LoginActivity.KEY_API) && prefs.contains(LoginActivity.KEY_USERNAME)) {
                 loggedIn = true;
                 this.username = prefs.getString(LoginActivity.KEY_USERNAME, "");
-                this.apiKey = prefs.getString(LoginActivity.KEY_API, "");
                 String password = prefs.getString(LoginActivity.KEY_PASSWORD, "");
                 props.setProperty(ModelManager.ATTR_LOGIN_USER, this.username);
                 props.setProperty(ModelManager.ATTR_LOGIN_PASS, password);
