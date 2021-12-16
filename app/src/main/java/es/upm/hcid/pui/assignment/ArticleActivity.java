@@ -16,12 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
-
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class ShowArticleActivity extends AppCompatActivity {
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
+
+public class ArticleActivity extends AppCompatActivity {
 
     private static final String PARAM_ARTICLE = "article";
     private static final int CODE_OPEN_IMAGE = 1;
@@ -30,7 +30,7 @@ public class ShowArticleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article_details);
+        setContentView(R.layout.activity_article);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -57,7 +57,7 @@ public class ShowArticleActivity extends AppCompatActivity {
         TextView article_abstract = findViewById(R.id.abstract_textView);
         TextView article_body = findViewById(R.id.body_textView);
         TextView userId = findViewById(R.id.userId_textView);
-        TextView modification_date = findViewById(R.id.modification_textView);
+       // TextView modification_date = findViewById(R.id.modification_textView);
 
         article_title.setText(article.getTitleText());
         article_abstract.setText(Html.fromHtml(article.getAbstractText(), Html.FROM_HTML_MODE_COMPACT));
@@ -65,11 +65,11 @@ public class ShowArticleActivity extends AppCompatActivity {
         article_category.setText(article.getCategory());
 
 
-        String modificationDate = "Modification date ";
+        /*String modificationDate = "Modification date ";
         if (article.getModificationDate()) {
             modificationDate += article.getModificationDate();
         }
-        modification_date.setText(modificationDate);
+        modification_date.setText(modificationDate);*/
 
         String userIdString = "User ID: ";
         if (article.getIdUser() > 0) {

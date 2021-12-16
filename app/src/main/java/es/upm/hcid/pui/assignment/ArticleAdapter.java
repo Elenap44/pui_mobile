@@ -59,7 +59,7 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = View.inflate(activity, R.layout.article_list_item, null);
+            convertView = View.inflate(activity, R.layout.activity_article_list, null);
         }
 
         Article article = filteredData.get(position);

@@ -16,6 +16,5 @@
     <string name="passwordHint">Password</string>
     <string name="usernameHeader">Username:</string>
     <string name="passwordHeader">Password:</string>
-    <string name="addArticleDescription">Add an article</string>
     <string name="rememberMeCheckbox">Remember me</string>
 </resources>

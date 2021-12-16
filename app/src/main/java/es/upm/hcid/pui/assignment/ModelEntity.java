@@ -1,9 +1,9 @@
 package es.upm.hcid.pui.assignment;
 
+import org.json.simple.JSONObject;
+
 import java.util.Enumeration;
 import java.util.Hashtable;
-
-import org.json.simple.JSONObject;
 
 import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 

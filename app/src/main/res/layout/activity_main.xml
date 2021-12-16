@@ -66,26 +66,11 @@
             android:layout_height="wrap_content"
             tools:visibility="gone" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="1" />
-
         <ListView
             android:id="@+id/articleListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"/>
 
-        </ListView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/addArticleDescription"
-            android:src="@android:drawable/ic_input_add"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 
 </LinearLayout>

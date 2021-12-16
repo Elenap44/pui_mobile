@@ -12,18 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="es.upm.hcid.pui.assignment.ShowArticleActivity">
-
-        <TextView
-            android:id="@+id/title_textView"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"/>
+        tools:context="es.upm.hcid.pui.assignment.ArticleActivity">
 
         <!--<TextView
             android:id="@+id/subtitle_textView"
@@ -31,19 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />-->
 
-        <TextView
-            android:id="@+id/category_textView"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="8dp"/>
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="209dp"
+            android:layout_height="331dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/newspaper"
             tools:ignore="MissingConstraints"
@@ -53,7 +33,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_textView"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/category_textView"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_image_edit"
@@ -67,14 +73,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="save"
+                android:text="Save article"
                 android:textAlignment="center"
                 android:visibility="gone" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/btn_article_delete"
@@ -84,6 +85,7 @@
                 android:onClick="deleteArticle"
                 android:text="Delete"
                 android:visibility="gone" />
+
         </LinearLayout>
 
         <TextView

@@ -1,8 +1,5 @@
 package es.upm.hcid.pui.assignment;
 
-import es.upm.hcid.pui.assignment.exceptions.AuthenticationError;
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -23,6 +20,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
+
+import es.upm.hcid.pui.assignment.exceptions.AuthenticationError;
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 public class ModelManager {
 	
@@ -144,22 +144,18 @@ public class ModelManager {
 				throw new AuthenticationError(connection.getResponseMessage());
 			}  
 		} catch (MalformedURLException e) {  
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		}  
 		catch (IOException e) {  
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		} 
 		catch (Exception e) {  
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new AuthenticationError(e.getMessage());
 		} 
 		
-	}
-
-	public void logout() {
-		this.apikey = null;
 	}
 	
 	private String parseHttpStreamResult(HttpURLConnection connection) throws UnsupportedEncodingException, IOException {
@@ -174,7 +170,7 @@ public class ModelManager {
 		br.close(); 
 		return res;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private int readRestResultFromInsert(String res) throws ParseException, ServerCommunicationError {
 		Object o = JSONValue.parseWithException(res);

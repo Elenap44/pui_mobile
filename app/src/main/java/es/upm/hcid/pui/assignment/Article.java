@@ -1,18 +1,17 @@
 package es.upm.hcid.pui.assignment;
 
 
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
-
 import org.json.simple.JSONObject;
 
-import java.util.Date;
 import java.util.Hashtable;
+
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 
 public class Article extends ModelEntity{
 	
 	private String titleText;
-	private String subtitleText;
+	//private String subtitleText;
 	private String category;
 	private String abstractText;
 	private String bodyText;
@@ -21,7 +20,7 @@ public class Article extends ModelEntity{
 	private Image mainImage;
 	private String imageDescription;
 	private String thumbnail;
-	private Date publicationDate;
+	//private Date publicationDate;
 
 	private String parseStringFromJson(JSONObject jsonArticle, String key, String def){
 		Object in = jsonArticle.getOrDefault(key,def);
@@ -78,12 +77,13 @@ public class Article extends ModelEntity{
 	public String getTitleText() {
 		return titleText;
 	}
-	public Date getModificationDate(){
+
+	/*public boolean getModificationDate(){
 		return publicationDate;
 	}
 	public void setModificationDate(Date modificationDate) {
 		this.publicationDate=modificationDate;
-	}
+	}*/
 
 	/*public String getSubtitleText() {
 		return subtitleText;
@@ -148,7 +148,7 @@ public class Article extends ModelEntity{
 				//+",subtitleText=" + subtitleText
 				+", abstractText=" + abstractText 
 				+  ", bodyText="	+ bodyText + ", footerText=" + footerText 
-				+ ", publicationDate=" + Utils.dateToString(publicationDate)
+				/*+ ", publicationDate=" + Utils.dateToString(publicationDate)*/
 				+", image_description=" + imageDescription
 				+", image_data=" + mainImage
 				+", thumbnail=" + thumbnail 
@@ -165,18 +165,17 @@ public class Article extends ModelEntity{
 		//res.put("is_deleted", ""+(isDeleted?1:0));
 		res.put("body", bodyText);
 		res.put("subtitle", footerText);
-
 		if (mainImage!=null){
 			res.put("image_data", mainImage.getImage());
 			res.put("image_media_type", "image/png");
 		}
-		
+
 		if (mainImage!=null && mainImage.getDescription()!=null && !mainImage.getDescription().isEmpty())
 			res.put("image_description", mainImage.getDescription());
 		else if (imageDescription!=null && !imageDescription.isEmpty())
 			res.put("image_description", imageDescription);
 
-		res.put("publication_date", publicationDate==null?null:Utils.dateToString(publicationDate));
+		//res.put("publication_date", publicationDate==null?null:Utils.dateToString(publicationDate));
 		return res;
 	}
 }

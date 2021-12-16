@@ -1,13 +1,13 @@
 package es.upm.hcid.pui.assignment;
 
-import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
-
 import java.util.List;
 
-public class GetArticleTask implements Runnable {
+import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
+
+public class GetArticle implements Runnable {
     MainActivity activity;
 
-    GetArticleTask(MainActivity activity) {
+    GetArticle(MainActivity activity) {
         this.activity = activity;
     }
 

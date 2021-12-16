@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setIndeterminate(true);
             progressBar.setVisibility(View.VISIBLE);
 
-            GetArticleTask task = new GetArticleTask(this);
+            GetArticle task = new GetArticle(this);
             new Thread(task).start();
         }
     }
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void routeToArticle(Article article) throws ServerCommunicationError {
         //Intent intent = new Intent(getApplicationContext(), EditArticleActivity.class);
-        Intent intent = new Intent(getApplicationContext(), ShowArticleActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ArticleActivity.class);
         intent.putExtra(PARAM_ARTICLE, article.getId());
         startActivity(intent);
     }
@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
             ed.putBoolean(LoginActivity.KEY_BOOLEAN, false);
             ed.apply();
 
-            modelManager.logout();
         }
         updateLabelsRegardingLoginStatus();
     }

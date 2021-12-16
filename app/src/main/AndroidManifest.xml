@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsAppG1">
         <activity
-            android:name="es.upm.hcid.pui.assignment.ShowArticleActivity"
+            android:name="es.upm.hcid.pui.assignment.ArticleActivity"
             android:exported="false" />
         <activity
             android:name="es.upm.hcid.pui.assignment.LoginActivity"

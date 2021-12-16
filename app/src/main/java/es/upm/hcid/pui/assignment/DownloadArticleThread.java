@@ -8,10 +8,10 @@ import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 
 public class DownloadArticleThread implements Runnable {
 
-    private ShowArticleActivity activity;
+    private ArticleActivity activity;
     private int id;
 
-    public DownloadArticleThread(ShowArticleActivity activity, int id){
+    public DownloadArticleThread(ArticleActivity activity, int id){
         this.activity = activity;
         this.id = id;
     }
