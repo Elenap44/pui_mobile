@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
+        android:id="@+id/filters"
         android:layout_width="0dp"
         android:layout_height="48dp"
 
@@ -20,7 +20,7 @@
     </com.google.android.material.tabs.TabLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/login_logOut_button"
+        android:id="@+id/btn_login_Out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -28,7 +28,7 @@
         android:contentDescription="@string/login"
         android:onClick="login"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/articleListView"
+        app:layout_constraintEnd_toEndOf="@+id/articleList"
         app:srcCompat="@android:drawable/ic_menu_set_as" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -41,7 +41,7 @@
 
 
         <TextView
-            android:id="@+id/loginStatus"
+            android:id="@+id/login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
@@ -66,12 +66,12 @@
         tools:visibility="gone" />
 
     <ListView
-        android:id="@+id/articleListView"
+        android:id="@+id/articleList"
         android:layout_width="411dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/appbar"
-        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+        app:layout_constraintTop_toBottomOf="@+id/filters" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

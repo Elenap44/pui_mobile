@@ -50,13 +50,13 @@ public class ArticleActivity extends AppCompatActivity {
 
         SelectedArticle = article;
 
-        TextView article_title = findViewById(R.id.title_textView);
+        TextView article_title = findViewById(R.id.title_text);
        // TextView article_subtitle = findViewById(R.id.subtitle_textView);
         ImageView article_image = findViewById(R.id.imageView);
-        TextView article_category = findViewById(R.id.category_textView);
-        TextView article_abstract = findViewById(R.id.abstract_textView);
-        TextView article_body = findViewById(R.id.body_textView);
-        TextView userId = findViewById(R.id.userId_textView);
+        TextView article_category = findViewById(R.id.category_text);
+        TextView article_abstract = findViewById(R.id.abstract_text);
+        TextView article_body = findViewById(R.id.body_text);
+        TextView userId = findViewById(R.id.userId_text);
        // TextView modification_date = findViewById(R.id.modification_textView);
 
         article_title.setText(article.getTitleText());
@@ -85,7 +85,7 @@ public class ArticleActivity extends AppCompatActivity {
 
         if (MainActivity.loggedIn) {
 
-            Button btn_image_edit = findViewById(R.id.imageEdit_button);
+            Button btn_image_edit = findViewById(R.id.btn_imageEdit);
             btn_image_edit.setVisibility(View.VISIBLE);
             btn_image_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,7 +98,7 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             });
 
-            Button btn_article_save = findViewById(R.id.articleSave_button);
+            Button btn_article_save = findViewById(R.id.btn_saveArticle);
             btn_article_save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,7 +116,7 @@ public class ArticleActivity extends AppCompatActivity {
                 }
             });
 
-            Button btn_article_delete = findViewById(R.id.articleDelete_button);
+            Button btn_article_delete = findViewById(R.id.btn_deleteArticle);
             btn_article_delete.setVisibility(View.VISIBLE);
         }
     }
@@ -142,13 +142,13 @@ public class ArticleActivity extends AppCompatActivity {
                         ImageView viewer = findViewById(R.id.imageView);
                         viewer.setImageBitmap(bmp);
 
-                        Button btn_article_save = findViewById(R.id.articleSave_button);
+                        Button btn_article_save = findViewById(R.id.btn_saveArticle);
                         btn_article_save.setVisibility(View.VISIBLE);
                     } catch (FileNotFoundException | ServerCommunicationError e) {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(this, "Action cancelled by user", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "The action was cancelled", Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:

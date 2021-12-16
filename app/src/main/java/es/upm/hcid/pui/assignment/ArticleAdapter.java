@@ -3,7 +3,6 @@ package es.upm.hcid.pui.assignment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,8 @@ import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 public class ArticleAdapter extends BaseAdapter implements Filterable {
     MainActivity activity;
     private List<Article> data = null;
-    private List<Article> filteredData = null;
-    private final ItemFilter mFilter = new ItemFilter();
+    private List<Article> dataFiltered = null;
+    private final ItemFilter itemFilter = new ItemFilter();
     private String filter;
 
 
@@ -32,9 +31,9 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
 
     public void setData(List<Article> data) {
         this.data = data;
-        this.filteredData = data;
+        this.dataFiltered = data;
         if (this.filter != null) {
-            this.mFilter.filter(this.filter);
+            this.itemFilter.filter(this.filter);
         }
 
         notifyDataSetChanged();
@@ -43,12 +42,12 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public int getCount() {
-        return filteredData != null ? filteredData.size() : 0;
+        return dataFiltered != null ? dataFiltered.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return filteredData != null ? filteredData.get(position) : null;
+        return dataFiltered != null ? dataFiltered.get(position) : null;
     }
 
     @Override
@@ -62,19 +61,15 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
             convertView = View.inflate(activity, R.layout.activity_article_list, null);
         }
 
-        Article article = filteredData.get(position);
-        TextView articleTitleLabel = convertView.findViewById(R.id.articleTitleLabel_textView);
-        articleTitleLabel.setEllipsize(TextUtils.TruncateAt.END);//probar
-        articleTitleLabel.setSingleLine();
-        articleTitleLabel.setMaxEms(15);
+        Article article = dataFiltered.get(position);
+        TextView articleTitleLabel = convertView.findViewById(R.id.articleTitle_text);
         articleTitleLabel.setText(article.getTitleText());
 
-        TextView articleCategoryLabel = convertView.findViewById(R.id.articleCategoryLabel_textView);
+        TextView articleCategoryLabel = convertView.findViewById(R.id.articleCategory_text);
         articleCategoryLabel.setText(article.getCategory());
 
-        TextView articleAbstractLabel = convertView.findViewById(R.id.articleAbstractLabel_textView);
-        articleAbstractLabel.setEllipsize(TextUtils.TruncateAt.END);
-        articleAbstractLabel.setMaxLines(4);
+        TextView articleAbstractLabel = convertView.findViewById(R.id.articleAbstract_text);
+        articleAbstractLabel.setMaxLines(6);
         articleAbstractLabel.setText(Html.fromHtml(article.getAbstractText(), Html.FROM_HTML_MODE_COMPACT));
 
         ImageView articleImageView = convertView.findViewById(R.id.articleImageView);
@@ -88,7 +83,6 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
                 }
             }
         } catch (ServerCommunicationError serverCommunicationError) {
-            System.out.println("oh no");
         }
         if (bitmap == null) {
             articleImageView.setImageResource(R.drawable.newspaper);
@@ -98,7 +92,7 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
 
         convertView.setOnClickListener(v -> {
             try {
-                activity.routeToArticle(filteredData.get(position));
+                activity.routeToArticle(dataFiltered.get(position));
             } catch (ServerCommunicationError serverCommunicationError) {
                 serverCommunicationError.printStackTrace();
             }
@@ -121,12 +115,12 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return mFilter;
+        return itemFilter;
     }
 
     public void setFilter(String filterer) {
         this.filter = filterer;
-        this.mFilter.filter(filterer);
+        this.itemFilter.filter(filterer);
     }
 
     private class ItemFilter extends Filter {
@@ -159,7 +153,7 @@ public class ArticleAdapter extends BaseAdapter implements Filterable {
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredData = (List<Article>) results.values;
+            dataFiltered = (List<Article>) results.values;
             notifyDataSetChanged();
         }
 

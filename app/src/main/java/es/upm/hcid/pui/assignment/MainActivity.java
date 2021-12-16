@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setupArticleData();
 
         // Tabs
-        TabLayout tabLayout = findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.filters);
         for (String tab : tabs) {
             tabLayout.addTab(tabLayout.newTab().setText(tab));
         }
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         Properties props = new Properties();
         props.setProperty(ModelManager.ATTR_SERVICE_URL, "https://sanger.dia.fi.upm.es/pmd-task/");
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean(LoginActivity.KEY_BOOLEAN, false)) {
             if (prefs.contains(LoginActivity.KEY_USERNAME)) {
                 loggedIn = true;
                 this.username = prefs.getString(LoginActivity.KEY_USERNAME, "");
@@ -79,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 props.setProperty(ModelManager.ATTR_LOGIN_USER, this.username);
                 props.setProperty(ModelManager.ATTR_LOGIN_PASS, password);
             }
-        }
 
         new Thread(() -> {
             try {
@@ -101,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         adapter = new ArticleAdapter(this);
-        ((ListView) findViewById(R.id.articleListView)).setAdapter(adapter);
+        ((ListView) findViewById(R.id.articleList)).setAdapter(adapter);
     }
 
     public void getArticles() {
@@ -148,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor ed = prefs.edit();
             ed.remove(LoginActivity.KEY_USERNAME);
             ed.remove(LoginActivity.KEY_PASSWORD);
-            ed.putBoolean(LoginActivity.KEY_BOOLEAN, false);
             ed.apply();
 
         }
@@ -164,16 +161,14 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void updateLabelsRegardingLoginStatus() {
         if (loggedIn) {
-            // change button label
-            FloatingActionButton loginButton = findViewById(R.id.login_logOut_button);
-            // change status
-            TextView loginStatus = findViewById(R.id.loginStatus);
+            FloatingActionButton loginButton = findViewById(R.id.btn_login_Out);
+            TextView loginStatus = findViewById(R.id.login_text);
             loginStatus.setText("You are logged");
         } else {
             // change button label
-            FloatingActionButton loginButton = findViewById(R.id.login_logOut_button);
+            FloatingActionButton loginButton = findViewById(R.id.btn_login_Out);
             // change status
-            TextView loginStatus = findViewById(R.id.loginStatus);
+            TextView loginStatus = findViewById(R.id.login_text);
             loginStatus.setText("You are not logged");
         }
 

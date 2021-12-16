@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="@+id/articleImageView">
 
         <TextView
-            android:id="@+id/articleCategoryLabel_textView"
+            android:id="@+id/articleCategory_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -41,7 +41,7 @@
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/articleTitleLabel_textView"
+            android:id="@+id/articleTitle_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -49,7 +49,7 @@
             android:textColor="#FFFFFF" />
 
         <TextView
-            android:id="@+id/articleAbstractLabel_textView"
+            android:id="@+id/articleAbstract_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

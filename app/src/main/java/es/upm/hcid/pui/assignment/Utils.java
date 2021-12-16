@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
-	private static final String DATE_FORMAT_MYSQL = "yyyy-MM-dd hh:mm:ss";//pregunta
+	private static final String DATE_FORMAT_MYSQL = "yyyy-MM-dd hh:mm:ss";
 	
 	public static Date dateFromString(String stringDate) throws java.text.ParseException{
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_MYSQL);
@@ -74,7 +74,7 @@ public class Utils {
 		int finalw = w;
 		int finalh = h;
 		double factor = 1.0d;
-	//	if (src != null) {
+		if (src != null) {
 			if (src.getWidth() > src.getHeight()) {
 				factor = ((double) src.getHeight() / (double) src.getWidth());
 				finalh = (int) (finalw * factor);
@@ -85,9 +85,9 @@ public class Utils {
 
 			Bitmap resizedImg = Bitmap.createScaledBitmap(src, finalw, finalh, true);
 			return imgToBase64String(resizedImg);
-	//	} else {//pregunta
-	//		return null;
-	//	}
+		} else {
+			return null;
+		}
 	}
 
 }
