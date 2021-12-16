@@ -24,8 +24,8 @@ import es.upm.hcid.pui.assignment.exceptions.ServerCommunicationError;
 public class ArticleActivity extends AppCompatActivity {
 
     private static final String PARAM_ARTICLE = "article";
-    private static final int CODE_OPEN_IMAGE = 1;
-    Article articleChosen;
+    private static final int OPEN_IMAGE = 1;
+    Article SelectedArticle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class ArticleActivity extends AppCompatActivity {
 
     protected void initialize(Article article) throws ServerCommunicationError {
 
-        articleChosen = article;
+        SelectedArticle = article;
 
         TextView article_title = findViewById(R.id.title_textView);
        // TextView article_subtitle = findViewById(R.id.subtitle_textView);
@@ -94,7 +94,7 @@ public class ArticleActivity extends AppCompatActivity {
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
-                    startActivityForResult(intent, CODE_OPEN_IMAGE);
+                    startActivityForResult(intent, OPEN_IMAGE);
                 }
             });
 
@@ -104,7 +104,7 @@ public class ArticleActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Thread thread = new Thread(() -> {
                         try {
-                            MainActivity.modelManager.save(articleChosen);
+                            MainActivity.modelManager.save(SelectedArticle);
                             finish();
 
                         } catch (Exception e) {
@@ -131,13 +131,13 @@ public class ArticleActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case CODE_OPEN_IMAGE:
+            case OPEN_IMAGE:
                 if (resultCode == Activity.RESULT_OK) {
                     InputStream stream = null;
                     try {
                         stream = getContentResolver().openInputStream(data.getData());
                         Bitmap bmp = Utils.createScaledImage(BitmapFactory.decodeStream(stream), 500, 500);
-                        articleChosen.addImage(Utils.imgToBase64String(bmp), "");
+                        SelectedArticle.addImage(Utils.imgToBase64String(bmp), "");
 
                         ImageView viewer = findViewById(R.id.imageView);
                         viewer.setImageBitmap(bmp);
@@ -158,7 +158,7 @@ public class ArticleActivity extends AppCompatActivity {
     public void deleteArticle(View view) {
         new Thread(() -> {
             try {
-                MainActivity.modelManager.delete(articleChosen);
+                MainActivity.modelManager.delete(SelectedArticle);
                 runOnUiThread(this::finish);
             } catch (ServerCommunicationError serverCommunicationError) {
                 serverCommunicationError.printStackTrace();

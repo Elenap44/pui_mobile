@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="es.upm.hcid.pui.assignment.ArticleActivity">
-        
+
 
         <ImageView
             android:id="@+id/imageView"
