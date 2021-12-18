@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         setupArticleData();
 
-        // Tabs
         TabLayout tabLayout = findViewById(R.id.filters);
         for (String tab : tabs) {
             tabLayout.addTab(tabLayout.newTab().setText(tab));
@@ -124,22 +123,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void routeToArticle(Article article) throws ServerCommunicationError {
-        //Intent intent = new Intent(getApplicationContext(), EditArticleActivity.class);
         Intent intent = new Intent(getApplicationContext(), ArticleActivity.class);
         intent.putExtra(PARAM_ARTICLE, article.getId());
         startActivity(intent);
     }
 
-
-    // LOGIN FUNCTIONALITY
-
     public void login(View view) {
         if (!loggedIn) {
-            // allow user to log in
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         } else {
-            // log out user
             loggedIn = false;
             updateLabelsRegardingLoginStatus();
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -165,9 +158,7 @@ public class MainActivity extends AppCompatActivity {
             TextView loginStatus = findViewById(R.id.login_text);
             loginStatus.setText("You are logged");
         } else {
-            // change button label
             FloatingActionButton loginButton = findViewById(R.id.btn_login_Out);
-            // change status
             TextView loginStatus = findViewById(R.id.login_text);
             loginStatus.setText("You are not logged");
         }
